@@ -52,7 +52,7 @@ public abstract class BaseFile {
 	@GET
     @Path("/{id}")
     @Produces("image/png")
-    public Response getPhoto(@PathParam("id") String id){ 
+    public Response getImage(@PathParam("id") String id){ 
     	String path = appSettings.getPatch(id);
     	return readFile(path);
     }
