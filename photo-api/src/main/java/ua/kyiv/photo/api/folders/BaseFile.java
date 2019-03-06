@@ -6,6 +6,7 @@ package ua.kyiv.photo.api.folders;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -67,10 +68,11 @@ public abstract class BaseFile {
 	
 	private Response readFile(String path) {
 		File repositoryFile = new File(path);
-		try{
-    		FileInputStream photo = new FileInputStream(repositoryFile);
+		try(FileInputStream photo = new FileInputStream(repositoryFile);){
 			return Response.ok().cacheControl(getCacheControl()).entity(photo).build();
 		} catch (FileNotFoundException e) {
+			return Response.ok().cacheControl(getCacheControl()).entity("No photo!").build();
+		} catch (IOException e1) {
 			return Response.ok().cacheControl(getCacheControl()).entity("No photo!").build();
 		}
 	}
