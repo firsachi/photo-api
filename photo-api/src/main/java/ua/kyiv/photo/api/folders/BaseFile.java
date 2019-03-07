@@ -50,13 +50,7 @@ public abstract class BaseFile {
 		return Response.ok().cacheControl(getCacheControl()).entity("!!! FILE NOT FOUND !!!!").build();
 	}
 	
-	@GET
-    @Path("/{id}")
-    @Produces("image/png")
-    public Response getImage(@PathParam("id") String id){ 
-    	String path = appSettings.getPatch(id);
-    	return readFile(path);
-    }
+	
 	
 	@GET
 	@Path("/{nameFolder}/{id}")
@@ -66,7 +60,7 @@ public abstract class BaseFile {
     	return readFile(path);
 	}
 	
-	private Response readFile(String path) {
+	protected Response readFile(String path) {
 		File repositoryFile = new File(path);
 		try(FileInputStream photo = new FileInputStream(repositoryFile);){
 			return Response.ok().cacheControl(getCacheControl()).entity(photo).build();
