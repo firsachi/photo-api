@@ -6,9 +6,11 @@
 package ua.kyiv.photo.api.folders;
 
 import javax.annotation.PostConstruct;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-
-import ua.kyiv.photo.api.settings.PathFile;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -19,8 +21,16 @@ public class Place extends BaseFile{
 	
 	@PostConstruct
 	public void init() {
-		appSettings.setPatch(PathFile.PATCH_PARAMETRS);
+		appSettings.setPatch("/home/scanner//%s//%s.jpg");
 		appSettings.setFolder("PLACE");
 	}
+	
+	@GET
+    @Path("/{id}")
+    @Produces("image/png")
+    public Response getImage(@PathParam("id") String id){ 
+    	String path = appSettings.getPatch(id);
+    	return readFile(path);
+    }
 	
 }

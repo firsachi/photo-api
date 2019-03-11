@@ -10,9 +10,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import ua.kyiv.photo.api.settings.PathFile;
-
-
 /**
  * @author firsachi
  *
@@ -22,7 +19,7 @@ public class Destroy extends BaseFile{
 
 	@PostConstruct
 	public void init() {
-		appSettings.setPatch(PathFile.PATCH_PARAMETRS);
+		appSettings.setPatch("/home/scanner//%s//%s.jpg");
 		appSettings.setFolder("DESTROY");
 	}
 	
