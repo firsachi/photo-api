@@ -14,32 +14,18 @@ import javax.ejb.Stateless;
 @Stateless
 public class AppSettings {
     
-	private String patch;
-	
-	private String folder;
+	private String path;
     
 	public String getPatch() {
-		return patch;
+		return path;
 	}
 
-	public void setPatch(String patch) {
-		this.patch = patch;
+	public void setPath(String path, String folderName) {
+		this.path = String.format(path, folderName);
 	}
-
-	public String getFolder() {
-		return folder;
-	}
-
-	public void setFolder(String folder) {
-		this.folder = folder;
-	}
-
-	public String getPatch(String id) {
-		return String.format(patch, folder, id);
-	}
-
-	public String setPatch(String nameFolder, String id) {
-		return String.format(patch, folder, nameFolder, id);
+	
+	public void setPath(String path, String firstFolderName, String secondFolderName) {
+		this.path = String.format(path, firstFolderName, secondFolderName);
 	}
     
 }
