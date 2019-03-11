@@ -5,18 +5,15 @@
  */
 package ua.kyiv.photo.api.folders;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import ua.kyiv.photo.api.service.ServiceJPG;
+import ua.kyiv.photo.api.settings.PathFile;
 /**
  *
  * @author firsov
@@ -24,25 +21,15 @@ import javax.ws.rs.core.Response;
 @Path("/place")
 public class Place extends BaseFile{
 	
-	@PostConstruct
-	public void init() {
-		appSettings.setPatch("/home/scanner//%s//%s.jpg");
-		appSettings.setFolder("PLACE");
-	}
+	@Inject
+	private ServiceJPG service;
 	
 	@GET
-    @Path("/{id}")
-    @Produces("image/png")
-    public Response getImage(@PathParam("id") String id){ 
-    	String path = appSettings.getPatch(id);
-    	File repositoryFile = new File(path);
-		try(FileInputStream photo = new FileInputStream(repositoryFile);){
-			return Response.ok().cacheControl(getCacheControl()).entity(photo).build();
-		} catch (FileNotFoundException e) {
-			return Response.ok().cacheControl(getCacheControl()).entity("No photo!").build();
-		} catch (IOException e1) {
-			return Response.ok().cacheControl(getCacheControl()).entity("No photo!").build();
-		}
-    }
+	@Path("/{nameFile}")
+	@Produces("image/png")
+	public Response getPhoto(@PathParam("nameFile") String fileName) {
+		appSettings.setPath(PathFile.PATCH_PARAMETRS, "PLACE");
+    	return Response.ok().cacheControl(getCacheControl()).entity(service.read(appSettings.getPatch(), fileName)).build();
+	}
 	
 }
