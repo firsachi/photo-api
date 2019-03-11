@@ -9,8 +9,8 @@ package ua.kyiv.photo.api.settings;
  */
 public class PathFile {
 	
-	public static final String PATCH_PARAMETRS = "/home/scanner//%s//%s.jpg";
+	public static final String PATCH_PARAMETRS = "/home/scanner//%s//";
 	
-	public static final String PATCH_TWO_PARAMETRS = "/home/scanner//%s//%s//%s.jpg";
+	public static final String PATCH_TWO_PARAMETRS = "/home/scanner//%s//%s//";
 
 }
