@@ -20,14 +20,10 @@ public class ServiceJPG {
 	
 	public byte[] read(String path, String fileNmae) {
 		File repositoryFile = new File(path, fileNmae + ".jpg");
+		byte[] result = null;
 		if (!repositoryFile.exists()) {
 			repositoryFile = new File(path, fileNmae + ".JPG");
-		}
-		byte[] result = null;
-		try(FileInputStream inStream = new FileInputStream(repositoryFile))	{
-			result = new byte[(int) repositoryFile.length()];
-			inStream.read(result);
-		} catch (FileNotFoundException nf) {
+		}if(!repositoryFile.exists()){
 			ClassLoader classLoader = getClass().getClassLoader();
 			File file = new File(classLoader.getResource("error.jpg").getFile());
 			result = new byte[(int) file.length()];
@@ -36,6 +32,10 @@ public class ServiceJPG {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+		try(FileInputStream inStream = new FileInputStream(repositoryFile))	{
+			result = new byte[(int) repositoryFile.length()];
+			inStream.read(result);
 		}
 		catch (IOException e) {
 			e.printStackTrace();
