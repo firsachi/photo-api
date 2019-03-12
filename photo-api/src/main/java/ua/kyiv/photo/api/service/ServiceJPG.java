@@ -29,7 +29,7 @@ public class ServiceJPG {
 			inStream.read(result);
 		} catch (FileNotFoundException nf) {
 			ClassLoader classLoader = getClass().getClassLoader();
-			File file = new File(classLoader.getResource("error.png").getFile());
+			File file = new File(classLoader.getResource("error.jpg").getFile());
 			result = new byte[(int) file.length()];
 			try (FileInputStream inStream = new FileInputStream(file)) {
 				inStream.read(result);
