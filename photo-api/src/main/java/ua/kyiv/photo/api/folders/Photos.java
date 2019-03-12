@@ -3,7 +3,7 @@
  */
 package ua.kyiv.photo.api.folders;
 
-import javax.inject.Inject;
+import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -20,7 +20,7 @@ import ua.kyiv.photo.api.settings.PathFile;
 @Path("/photo")
 public class Photos extends BaseFile{
 	
-	@Inject
+	@EJB
 	private ServiceJPG service;
 	
 	@GET
