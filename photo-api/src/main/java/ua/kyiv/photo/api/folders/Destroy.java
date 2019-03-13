@@ -11,7 +11,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import ua.kyiv.photo.api.service.ServiceJPG;
-import ua.kyiv.photo.api.settings.PathFile;
 
 /**
  * @author firsachi
@@ -20,7 +19,6 @@ import ua.kyiv.photo.api.settings.PathFile;
 @Path("/destroy")
 public class Destroy extends BaseFile{
 
-
 	@Inject
 	private ServiceJPG service;
 	
@@ -28,8 +26,8 @@ public class Destroy extends BaseFile{
 	@Path("/{nameFile}")
 	@Produces("image/png")
 	public Response getPhoto(@PathParam("nameFile") String fileName) {
-		appSettings.setPath(PathFile.PATCH_PARAMETRS, "DESTROY");
-    	return Response.ok().cacheControl(getCacheControl()).entity(service.read(appSettings.getPatch(), fileName)).build();
+		String path = "home/scanner/DESTROY/";
+    	return Response.ok().cacheControl(getCacheControl()).entity(service.read(path, fileName)).build();
 	}
 	
 }

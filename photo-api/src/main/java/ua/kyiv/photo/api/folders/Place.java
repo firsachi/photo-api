@@ -13,7 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import ua.kyiv.photo.api.service.ServiceJPG;
-import ua.kyiv.photo.api.settings.PathFile;
+
 /**
  *
  * @author firsov
@@ -28,8 +28,8 @@ public class Place extends BaseFile{
 	@Path("/{nameFile}")
 	@Produces("image/png")
 	public Response getPhoto(@PathParam("nameFile") String fileName) {
-		appSettings.setPath(PathFile.PATCH_PARAMETRS, "PLACE");
-    	return Response.ok().cacheControl(getCacheControl()).entity(service.read("/home/scanner/PLACE/", fileName)).build();
+		String path = "/home/scanner/PLACE/";
+    	return Response.ok().cacheControl(getCacheControl()).entity(service.read(path, fileName)).build();
 	}
 	
 }

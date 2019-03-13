@@ -11,7 +11,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import ua.kyiv.photo.api.service.ServiceJPG;
-import ua.kyiv.photo.api.settings.PathFile;
 
 /**
  * @author firsov
@@ -27,8 +26,8 @@ public class Photos extends BaseFile{
 	@Path("/{nameFolder}/{nameFile}")
 	@Produces("image/png")
 	public Response getPhoto(@PathParam("nameFolder") String nameFolder ,@PathParam("nameFile") String fileName) {
-		appSettings.setPath(PathFile.PATCH_TWO_PARAMETRS, "PHOTO", nameFolder);
-    	return Response.ok().cacheControl(getCacheControl()).entity(service.read("/home/scanner/PHOTO/"+nameFolder, fileName)).build();
+		String path = "/home/scanner/PHOTO/" + nameFolder;
+    	return Response.ok().cacheControl(getCacheControl()).entity(service.read(path, fileName)).build();
 	}
 
 }
