@@ -15,7 +15,7 @@ public class Maket extends BaseFile{
 	
 	@PostConstruct
 	public void init() {
-		path = "/home/scanner/Maket/";
+		path = "/home/scanner/MAKET/";
 	}
 	
 }
