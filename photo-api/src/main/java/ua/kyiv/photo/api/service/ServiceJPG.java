@@ -3,13 +3,9 @@
  */
 package ua.kyiv.photo.api.service;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Arrays;
 
 import javax.ejb.Stateless;
 
@@ -35,7 +31,6 @@ public class ServiceJPG {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
 			return result;
 		}
 		
