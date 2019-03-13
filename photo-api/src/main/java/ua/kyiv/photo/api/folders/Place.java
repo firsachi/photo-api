@@ -29,7 +29,7 @@ public class Place extends BaseFile{
 	@Produces("image/png")
 	public Response getPhoto(@PathParam("nameFile") String fileName) {
 		appSettings.setPath(PathFile.PATCH_PARAMETRS, "PLACE");
-    	return Response.ok().cacheControl(getCacheControl()).entity(service.read(appSettings.getPatch(), fileName)).build();
+    	return Response.ok().cacheControl(getCacheControl()).entity(service.read("/home/scanner/PLACE/", fileName)).build();
 	}
 	
 }

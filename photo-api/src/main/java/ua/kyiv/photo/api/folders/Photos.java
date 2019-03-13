@@ -28,7 +28,7 @@ public class Photos extends BaseFile{
 	@Produces("image/png")
 	public Response getPhoto(@PathParam("nameFolder") String nameFolder ,@PathParam("nameFile") String fileName) {
 		appSettings.setPath(PathFile.PATCH_TWO_PARAMETRS, "PHOTO", nameFolder);
-    	return Response.ok().cacheControl(getCacheControl()).entity(service.read(appSettings.getPatch(), fileName)).build();
+    	return Response.ok().cacheControl(getCacheControl()).entity(service.read("/home/scanner/PHOTO/", fileName)).build();
 	}
 
 }
