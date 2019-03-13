@@ -2,11 +2,16 @@
  * 
  */
 package ua.kyiv.photo.api.folders;
-
-import javax.inject.Inject;
+import javax.ejb.EJB;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.CacheControl;
+import javax.ws.rs.core.Response;
 
-import ua.kyiv.photo.api.settings.AppSettings;
+import ua.kyiv.photo.api.service.ServiceJPG;
+
 
 /**
  * @author firsov
@@ -14,14 +19,12 @@ import ua.kyiv.photo.api.settings.AppSettings;
  */
 public abstract class BaseFile {
 	
+	@EJB
+	private ServiceJPG service;
+	
 	private CacheControl cacheControl;
 	
-	@Inject
-	protected AppSettings appSettings;
-	
-	public void setAppSettings(AppSettings appSettings) {
-		this.appSettings = appSettings;
-	}
+	protected String path;
 
 	public BaseFile() {
 		super();
@@ -31,7 +34,14 @@ public abstract class BaseFile {
     	cacheControl.setPrivate(false);
     	cacheControl.setMaxAge(-1);
 	}
-
+	
+	@GET
+	@Path("/{nameFile}")
+	@Produces("image/png")
+	public Response getPhoto(@PathParam("nameFile") String fileName) {
+		return Response.ok().cacheControl(getCacheControl()).entity(service.read(path, fileName)).build();
+	}
+	
 	public CacheControl getCacheControl() {
 		return cacheControl;
 	}
