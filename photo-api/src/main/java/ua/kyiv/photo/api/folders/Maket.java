@@ -10,7 +10,7 @@ import javax.ws.rs.Path;
  * @author firsov
  *
  */
-@Path("/macet")
+@Path("/maket")
 public class Maket extends BaseFile{
 	
 	@PostConstruct
