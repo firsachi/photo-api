@@ -15,11 +15,11 @@ import javax.ws.rs.core.Response;
  *
  */
 @Path("/photo")
-public class ServicePhotos extends ServiceBaseFile implements BaseComplexFilePath{
+public class ServicePhoto extends ServiceBaseFile implements BaseComplexFilePath{
 	
 	@PostConstruct
 	public void init() {
-		this.path = "/home/scanner/FOTO/";
+		this.path = "/home/scanner/PHOTO/";
 		this.fileExtension = ".jpg";
 	}
 
