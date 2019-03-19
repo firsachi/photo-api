@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ua.kyiv.photo.api.service;
+package ua.kyiv.photo.api.repository;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,14 +14,16 @@ import javax.ejb.Stateless;
  *
  */
 @Stateless
-public class ServiceJPG {
+public class RepositoryFile {
 	
-	public byte[] read(String path, String fileNmae) {
-		File repositoryFile = new File(path, fileNmae + ".jpg");
+	public byte[] read(String path, String fileNmae, String fileExtension) {
+		File repositoryFile = new File(path, fileNmae + fileExtension);
 		byte[] result = null;
 		if (!repositoryFile.exists()) {
-			repositoryFile = new File(path, fileNmae + ".JPG");
+			repositoryFile = new File(path, fileNmae + fileExtension.toUpperCase());
+			System.out.println(repositoryFile);
 		}if(!repositoryFile.exists()){
+			System.out.println(repositoryFile);
 			ClassLoader classLoader = getClass().getClassLoader();
 			File file = new File(classLoader.getResource("error.jpg").getFile());
 			file.renameTo(repositoryFile);
