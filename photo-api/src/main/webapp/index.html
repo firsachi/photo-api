@@ -10,7 +10,7 @@
 	
 	<body>
 		<div class="row">
-			<div class="column">
+		@PathParam("nameFile") 	<div class="column">
 				<div class="top-bar">
 					<ul class="dropdown menu" data-dropdown-menu>
       					<li class="menu-text">FILE-API GRADSOFT</li>
@@ -190,6 +190,33 @@
 					</div>
 				</div>
 				
+				<div class="card">
+					<a name="small"></a>
+					<div class="card-divider">Small</div>
+					<div>
+						<br>
+						<span>Read images folder small</span>
+						<table>
+							<tr>
+								<td>url:</td>
+								<td>http://zoidberg.kievreclama.local/photo-api/api/photo/{name-folder}/{name-file}</td>
+							</tr>
+							<tr>
+								<td>name-file:</td>
+								<td>String variable to contain the file name.</td>
+							</tr>
+							<tr>
+								<td>name-folder:</td>
+								<td>String variable to contain the file name.</td>
+							</tr>
+							<tr>
+								<td>Execution result:</td>
+								<td>Returns the page with the desired pattern. If the file is not found then it returns an image with an error.</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				
 			</div>
 			
 			<div class="columns medium-2 large-2" >
@@ -202,6 +229,7 @@
 						<li><a href="#foto">Foto</a></li>
 						<li><a href="#eskis">Eskis</a></li>
 						<li><a href="#maket">Maket</a></li>
+						<li><a href="#small">Small</a></li>
 					</ul>
 				</div>
 			</div>
