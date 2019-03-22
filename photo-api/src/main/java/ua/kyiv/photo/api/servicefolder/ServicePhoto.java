@@ -28,7 +28,7 @@ public class ServicePhoto extends ServiceBaseFile implements BaseComplexFilePath
 	@Override
 	@Path("/{nameFolder}/{nameFile}")
 	@Produces("image/png")
-	public Response getPhoto(@PathParam("nameFolder") String nameFolder ,@PathParam("nameFile") String fileName) {
+	public Response getPhoto(@PathParam("nameFolder") String nameFolder, @PathParam("nameFile") String fileName) {
 		this.path = this.path + nameFolder;
     	return Response.ok().cacheControl(getCacheControl()).entity(service.read(this.path, fileName, fileExtension)).build();
 	}
