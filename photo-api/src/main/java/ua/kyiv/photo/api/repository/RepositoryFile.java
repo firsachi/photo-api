@@ -21,9 +21,7 @@ public class RepositoryFile {
 		byte[] result = null;
 		if (!repositoryFile.exists()) {
 			repositoryFile = new File(path, fileNmae + fileExtension.toUpperCase());
-			System.out.println(repositoryFile);
 		}if(!repositoryFile.exists()){
-			System.out.println(repositoryFile);
 			ClassLoader classLoader = getClass().getClassLoader();
 			File file = new File(classLoader.getResource("error.jpg").getFile());
 			file.renameTo(repositoryFile);
