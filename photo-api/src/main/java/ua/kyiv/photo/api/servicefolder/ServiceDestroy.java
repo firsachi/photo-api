@@ -19,7 +19,7 @@ public class ServiceDestroy extends ServiceBaseFile implements BaseSimpleFilePat
 
 	@PostConstruct
 	public void init() {
-		this.path = "/home/scanner/DESTROY/";
+		this.path = "/mnt/scanner/DESTROY/";
 		this.fileExtension = ".jpg";
 	}
 

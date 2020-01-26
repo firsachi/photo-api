@@ -19,7 +19,7 @@ public class ServiceFoto extends ServiceBaseFile implements BaseSimpleFilePath{
 	
 	@PostConstruct
 	public void init() {
-		this.path = "/home/scanner/FOTO/";
+		this.path = "/mnt/scanner/FOTO/";
 		this.fileExtension = ".jpg";
 	}
 

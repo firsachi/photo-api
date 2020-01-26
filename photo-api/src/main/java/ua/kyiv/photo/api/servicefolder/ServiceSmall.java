@@ -19,7 +19,7 @@ public class ServiceSmall extends ServiceBaseFile implements BaseComplexFilePath
 	
 	@PostConstruct
 	public void init() {
-		this.path = "/home/scanner/SMALL/";
+		this.path = "/mnt/scanner/SMALL/";
 		this.fileExtension = ".jpg";
 	}
 

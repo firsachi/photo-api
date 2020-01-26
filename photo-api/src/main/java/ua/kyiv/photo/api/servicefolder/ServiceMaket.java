@@ -19,7 +19,7 @@ public class ServiceMaket extends ServiceBaseFile implements BaseSimpleFilePath{
 	
 	@PostConstruct
 	public void init() {
-		this.path = "/home/scanner/MAKET/";
+		this.path = "/mnt/scanner/MAKET/";
 		this.fileExtension = ".jpg";
 	}
 

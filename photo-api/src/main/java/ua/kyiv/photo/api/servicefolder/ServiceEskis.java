@@ -19,7 +19,7 @@ public class ServiceEskis extends ServiceBaseFile implements BaseSimpleFilePath{
 	
 	@PostConstruct
 	public void init() {
-		this.path = "/home/scanner/ESKIS/";
+		this.path = "/mnt/scanner/ESKIS/";
 		this.fileExtension = ".jpg";
 	}
 
